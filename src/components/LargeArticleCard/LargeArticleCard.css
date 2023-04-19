@@ -1,0 +1,42 @@
+.largeCard{
+    border-radius: 0.5rem;
+	background-color: #ffffff;
+    margin: 0 auto;
+    position: relative;
+    padding-bottom: 3rem;
+    max-width: 600px;
+}
+
+.largeImg{
+    border-radius: 0.5rem 0.5rem 0 0;
+    width:100%;
+}
+
+.truncateBody {
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.largeCardTitle{
+    font-size: 1.5rem;
+    margin-top: 0.25rem;
+}
+
+.largeCardSubHeadigns{
+    display: flex;
+	gap: 1rem;
+	align-items: center;
+	color: var(--colour-grey);
+	font-size: 0.8rem;
+}
+
+.largeCardBody{
+    margin-top: 0.5rem;
+}
+
+.largeCardInfo{
+    margin: 0 1rem
+}

@@ -1,0 +1,18 @@
+.likeContainer{
+    display: flex;
+    gap: .5rem;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.heart{
+    font-size: 1.25rem;
+    color: var(--colour-light-brown);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.heart:hover{
+    transform: scale(1.25);
+}

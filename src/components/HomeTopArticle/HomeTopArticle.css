@@ -1,0 +1,44 @@
+.TopArticleSection {
+  position: relative;
+}
+
+.swiperNavNext .swiperNavPrev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  cursor: pointer;
+}
+
+.swiperNavPrev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  cursor: pointer;
+  left: 1.25rem;
+  color: var(--colour-second-white);
+  font-size: 1.5rem;
+  display: none;
+}
+
+.swiperNavNext {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  cursor: pointer;
+  right: 1.25rem;
+  color: var(--colour-second-white);
+  font-size: 1.5rem;
+  display: none;
+}
+
+@media screen and (min-width: 900px) {
+  .swiperNavPrev {
+    display: inline;
+  }
+  .swiperNavNext {
+    display: inline;
+  }
+}

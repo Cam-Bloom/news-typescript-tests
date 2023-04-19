@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Article from "./pages/Article/Article";
+import Home from "./pages/Home/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import TopicPage from "./pages/TopicPage/TopicPage";
+import MenuPage from "./pages/MenuPage/MenuPage";
+import AboutUs from "./pages/AboutUs/AboutUs";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import LoginConfirmation from "./components/LoginConfirmation/LoginConfirmation";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/article/:article_id" element={<Article />} />
+        <Route path="/topics/:topic" element={<TopicPage />} />
+        <Route path="/menu" element={<MenuPage />} />
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/loginconfirm" element={<LoginConfirmation />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

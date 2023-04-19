@@ -1,0 +1,64 @@
+.menuPage{
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--colour-black);
+    color: var(--colour-pure-white);
+    position: relative;
+    transition: none;
+
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
+}
+
+.menuNav{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: fadeInAnimation ease 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.menuNavLink{
+    color: var(--colour-pure-white);
+    font-size: 2.75rem;
+    font-family: var(--title-font);
+}
+
+.menuNavLink:hover {
+	color: var(--colour-light-brown);
+	transform: translateY(-0.15rem);
+}
+
+.menuTitle{
+
+    margin-bottom: 1.25rem;
+}
+
+.closeCrossIcon{
+    font-size: 2rem;
+    position: absolute;
+    right: 0;
+    margin: 1.5rem;
+    cursor: pointer;
+    animation: fadeInAnimation ease 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.closeCrossIcon:hover {
+	color: var(--colour-light-brown);
+	transform: translateY(-0.15rem);
+}

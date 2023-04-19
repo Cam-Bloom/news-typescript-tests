@@ -1,0 +1,62 @@
+.topicSelect{
+	margin: 0 1rem;
+}
+.topicSwiper {
+	cursor: grab;
+}
+
+.topicSlide {
+	font-size: 2.5rem;
+	font-family: var(--title-font);
+	font-weight: 500;
+	cursor: pointer;
+	width: max-content;
+}
+
+.topicSlide:hover {
+	color: var(--colour-brown);
+	transform: translateY(-0.15rem);
+}
+
+.topicsTitle{
+	font-size: 1.75rem;
+	font-weight: 700;
+}
+
+.activeTopic{
+    color: var(--colour-brown);
+}
+
+.noselect {
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Old versions of Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+.swipeText{
+	font-family: var(--title-font);
+	font-weight: 700;
+	color: var(--colour-black);
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+	justify-content: center;
+	margin-right: 1rem;
+}
+
+.topicHeadings{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 1rem;
+}
+
+@media screen and (max-width: 400px) {
+	.topicSlide {
+		font-size: 2rem;
+	}
+
+}

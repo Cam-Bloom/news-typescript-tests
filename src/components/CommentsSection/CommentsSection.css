@@ -1,0 +1,108 @@
+@keyframes shake {
+	0% {
+		margin-left: 0rem;
+	}
+	25% {
+		margin-left: 0.3rem;
+	}
+	75% {
+		margin-left: -0.3rem;
+	}
+	100% {
+		margin-left: 0rem;
+	}
+}
+
+.commentSection {
+	margin: 0.8rem;
+	padding-bottom: 1rem;
+}
+
+.postcomment {
+	display: flex;
+	flex-direction: column;
+	min-width: 200px;
+	position: relative;
+	margin: 0 0.8rem;
+	margin-top: 1rem;
+}
+
+.postcomment input {
+	height: 50px;
+	padding: 14px 16px 0 10px;
+	background-color: var(--colour-second-white);;
+	border-radius: 0.5rem;
+	font-weight: 300;
+    border: 1px solid transparent;
+}
+
+.postcomment label {
+	padding: 0 12px;
+	color: var(--colour-grey);
+	pointer-events: none;
+	position: absolute;
+	transform: translate(0, 14px) scale(1);
+	transform-origin: top left;
+	transition: all 0.2s ease-out;
+   
+}
+
+.postcomment:focus-within label {
+	transform: translate(0, 6px) scale(0.75);
+}
+
+.activeInput label {
+	transform: translate(0, 6px) scale(0.75);
+}
+
+.invalid input {
+	border-color: rgb(180, 23, 23);
+	animation: shake 0.2s ease-in-out 0s 2;
+}
+
+.invalid label {
+	color: rgb(180, 23, 23);
+}
+
+.commentButton {
+	position: absolute;
+	right: 0;
+	height: 50px;
+	border-radius: 0.5rem;
+	font-size: 1.25rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	background-color: var(--colour-light-brown);
+    color: var(--colour-second-white);
+}
+
+.commentButton:hover{
+	transform: scale(1.025);
+}
+
+.LoginAttemptText{
+	margin-left: 1.25rem;
+	color: rgb(180, 23, 23);
+}
+
+.LoginAttempt{
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin-top: 0.5rem;
+}
+
+.ToLoginButton{
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-size: 0.75rem;
+	cursor: pointer;
+}
+
+.ToLoginButton:hover {
+	color: var(--colour-brown);
+	transform: translateY(-0.15rem);
+}

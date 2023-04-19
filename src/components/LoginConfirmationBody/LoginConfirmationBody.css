@@ -1,0 +1,45 @@
+.returnHomeButton {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.returnHomeButton:hover {
+	color: var(--colour-brown);
+	transform: translateY(-0.15rem);
+}
+
+
+.confirmationBody{
+    background-color: var(--colour-pure-white);
+    margin: 2rem;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    max-width: 30rem;
+}
+
+.confirmImg{
+    border-radius: 50%;
+    object-fit: contain;
+    width: 10rem;
+    height: 10rem;
+    border: 1px solid var(--colour-brown);
+    padding: 2rem;
+    display: block;
+    margin: 1rem auto;
+
+}
+
+.confirmationTitle{
+    display: flex;
+	align-items: center;
+    justify-content: center;
+}
+
+@media screen and (min-width: 600px) {
+    .confirmationBody{
+        margin: 2rem auto;
+    }
+}

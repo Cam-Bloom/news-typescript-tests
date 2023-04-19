@@ -1,0 +1,32 @@
+.topicContainer{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 1rem;
+}
+
+.topicPageTitle{
+    margin-left: 1.5rem;
+    font-size: 3rem;
+}
+
+.topicError{
+    margin: 2rem auto;
+    width: max-content;
+    font-size: 2.5rem;
+    font-weight: 600;
+	font-family: var(--title-font);
+}
+
+@media screen and (min-width: 900px) {
+    .topicContainer{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .topicContainer{
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}

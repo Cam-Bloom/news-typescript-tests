@@ -1,0 +1,26 @@
+.commentCard{
+    border-radius: 1rem;
+    margin: 1rem 0.4rem;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.commentCard > h5{
+    color: var(--colour-grey);
+}
+
+.commentContent{
+ width: 90%;
+}
+
+.deleteIcon{
+    margin-right: 1.25rem;
+}
+
+.deleteIcon:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    color: var(--colour-brown);
+}

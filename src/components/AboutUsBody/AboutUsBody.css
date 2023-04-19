@@ -1,0 +1,36 @@
+.AboutUsImage {
+	width: 100%;
+	max-height: 30rem;
+	object-fit: cover;
+	border-radius: 0.5rem 0.5rem 0rem 0rem;
+}
+
+.AboutUsTitle {
+	margin-left: 1rem;
+	margin-top: 0.5rem;
+}
+
+.AboutUsBody {
+	margin: 0.5rem 1rem 1rem 1rem;
+}
+
+@media screen and (min-width: 1200px) {
+	.AboutUsPage {
+		margin: 0 10rem;
+	}
+
+}
+
+.AboutUsPage {
+	background-color: var(--colour-pure-white);
+	margin: 2rem 1rem;
+	border-radius: 0.5rem;
+	padding-bottom: 0.5rem;
+	max-width: 700px;
+}
+
+@media screen and (min-width: 732px) {
+	.AboutUsPage {
+		margin: 2rem auto;
+	}
+}
