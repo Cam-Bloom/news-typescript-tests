@@ -9,7 +9,6 @@ import { useContext } from "react";
 import { FaArrowCircleRight } from "react-icons/fa";
 import IComment from "../../interfaces/IComment";
 import "./CommentsSection.css";
-import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import IUserContext from "../../interfaces/IUserContext";
 
 interface Props {
