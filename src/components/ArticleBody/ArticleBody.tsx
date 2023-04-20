@@ -4,12 +4,19 @@ import { fetchArticlesById } from "../../utils/utils";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import LikeButton from "../LikeButton/LikeButton";
 import "./ArticleBody.css";
+import IArticle from "../../interfaces/IArticle";
 
-const ArticleBody = ({ loading, setLoading, error, setError }: any) => {
+interface Props {
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  error: null | string;
+  setError: React.Dispatch<React.SetStateAction<string | null>>;
+}
+const ArticleBody = ({ loading, setLoading, error, setError }: Props) => {
   const { article_id } = useParams();
   const navigate = useNavigate();
 
-  const [article, setArticle] = useState({});
+  const [article, setArticle] = useState<IArticle | null>(null);
 
   useEffect(() => {
     setLoading(true);
@@ -22,19 +29,12 @@ const ArticleBody = ({ loading, setLoading, error, setError }: any) => {
       .catch((err) => {
         console.log(err);
         setLoading(false);
-        setError({ err });
+        setError(err);
       });
   }, [article_id, setLoading, setError]);
 
-  const {
-    title,
-    topic,
-    author,
-    body,
-    created_at,
-    votes,
-    article_img_url,
-  }: any = article;
+  const { title, topic, author, body, created_at, votes, article_img_url } =
+    article!;
 
   const date = created_at?.slice(0, 10).split("-").reverse().join("-");
 

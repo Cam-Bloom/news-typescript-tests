@@ -3,11 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { FaArrowCircleRight } from "react-icons/fa";
 import { UserContext } from "../../context/UserContext";
 import { useContext } from "react";
+import IUserContext from "../../interfaces/IUserContext";
 
 const LoginConfirmationBody = () => {
   const navigate = useNavigate();
-  const { userDetails }: any = useContext(UserContext);
-  const { name, avatar_url } = userDetails;
+  const { userDetails } = useContext(UserContext) as IUserContext;
+  // const { name, avatar_url } = userDetails as IUserDetails;
+  const name = userDetails ? userDetails.name : "";
+  const avatar_url = userDetails ? userDetails.avatar_url : "";
 
   return (
     <div className="confirmationBody">

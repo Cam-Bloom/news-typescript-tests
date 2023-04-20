@@ -6,8 +6,8 @@ import './ArticleContainer.css'
 
 const ArticleContainer = () => {
 
-	const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null)
+	const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<null | string>(null)
 
   return (
     <section className='articleContainer'>

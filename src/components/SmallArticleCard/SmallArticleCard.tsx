@@ -1,22 +1,23 @@
-import { useNavigate } from "react-router-dom";
-import Article from "../../interfaces/IArticle";
-import "./LargeArticleCard.css";
 import { FaArrowCircleRight } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import IArticle from "../../interfaces/IArticle";
 
-const LargeArticleCard = ({ article }: { article: Article }) => {
-  const { title, topic, author, body, article_img_url, article_id } = article;
+import "./SmallArticleCard.css";
+
+const SmallArtCard = ({ article }: { article: IArticle }) => {
+  const { title, topic, author, article_img_url, article_id } = article;
   const navigate = useNavigate();
 
   return (
-    <li className="largeCard">
+    <li className="smallCard">
       <img
-        className="largeImg"
+        className="smallImg"
         src={article_img_url}
         alt={`${title} by ${author}`}
       />
-      <div className="largeCardInfo">
-        <h3 className="truncate largeCardTitle">{title}</h3>
-        <div className="largeCardSubHeadigns">
+      <div className="smallCardInfo">
+        <h3 className="truncate smallCardTitle">{title}</h3>
+        <div className="subHeadigns">
           <h5>{author}</h5>
           <h5
             className="clickOn"
@@ -27,7 +28,6 @@ const LargeArticleCard = ({ article }: { article: Article }) => {
             {topic}
           </h5>
         </div>
-        <p className="truncateBody largeCardBody">{body}</p>
         <div
           className="readMore"
           onClick={() => {
@@ -42,4 +42,4 @@ const LargeArticleCard = ({ article }: { article: Article }) => {
   );
 };
 
-export default LargeArticleCard;
+export default SmallArtCard;

@@ -11,7 +11,7 @@ interface Props {
   setSearchQueries: React.Dispatch<React.SetStateAction<ISearchQueries>>;
 }
 
-const HomeArtCont: React.FC<Props> = ({ searchQueries, setSearchQueries }) => {
+const HomeArtCont = ({ searchQueries, setSearchQueries }: Props) => {
   const [articlesFromApi, setArticlesFromApi] = useState<Article[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -25,7 +25,7 @@ const HomeArtCont: React.FC<Props> = ({ searchQueries, setSearchQueries }) => {
   }, [searchQueries]);
 
   // e is not needed but onclick has a mouse event type and expects e
-  const showAllArticles = (e: any, limit = 1000): void => {
+  const showAllArticles = (limit = 1000) => {
     setSearchQueries((currentSearchQueries) => {
       const newSearchQueries = { ...currentSearchQueries };
       newSearchQueries.limit = limit;
@@ -42,7 +42,7 @@ const HomeArtCont: React.FC<Props> = ({ searchQueries, setSearchQueries }) => {
           <SmallArticleCard key={article.article_id} article={article} />
         ))}
       </ul>
-      <button onClick={showAllArticles}>Show More</button>
+      <button onClick={() => showAllArticles()}>Show More</button>
     </section>
   );
 };

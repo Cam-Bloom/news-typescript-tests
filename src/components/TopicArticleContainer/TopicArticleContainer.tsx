@@ -12,8 +12,6 @@ type TopicParams = Pick<ISearchQueries, "topic">;
 const TopicArticleContainer = () => {
   const { topic } = useParams<TopicParams>();
 
-  // function useParams<K extends string = string>(): Readonly<Params<K>>;
-
   const [topicArticlesApi, setTopicArticlesApi] = useState<Article[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);

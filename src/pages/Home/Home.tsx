@@ -20,7 +20,7 @@ const Home = () => {
     <div>
       <Header />
       <div className="homePage">
-        {/* <HomeTopArticle /> */}
+        <HomeTopArticle />
         <HomeSortSection setSearchQueries={setSearchQueries} />
         <HomeArticleContainer
           setSearchQueries={setSearchQueries}

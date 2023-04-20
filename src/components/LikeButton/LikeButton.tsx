@@ -4,7 +4,7 @@ import { patchArticleVotes } from "../../utils/utils";
 import { useParams } from "react-router-dom";
 import "./LikeButton.css";
 
-const LikeButton = ({ votes }: any) => {
+const LikeButton = ({ votes }: { votes: number }) => {
   const { article_id } = useParams();
 
   const [liked, setLiked] = useState<boolean>(false);
@@ -16,7 +16,7 @@ const LikeButton = ({ votes }: any) => {
     setErr(null);
     setDisplayedVotes((currentDisplayedVotes) => currentDisplayedVotes + 1);
 
-    patchArticleVotes(article_id)
+    patchArticleVotes(article_id!)
       .then((res) => console.log(res))
       .catch((err) => {
         setLiked(false);
@@ -36,6 +36,7 @@ const LikeButton = ({ votes }: any) => {
         <p>{displayedVotes} </p>
       </div>
       {err ? <p>{err}</p> : null}
+      {/* err && <p>{err}</p> ??? */}
     </div>
   );
 };

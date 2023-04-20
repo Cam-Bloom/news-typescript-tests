@@ -1,10 +1,12 @@
-import { useState, useRef } from "react";
+import { useState, useRef, FormEvent } from "react";
 import { FaChevronDown, FaRegWindowMinimize } from "react-icons/fa";
 import ISearchQueries from "../../interfaces/ISearchQueries";
 import "./HomeSortSection.css";
 
-const HomeSortSection: React.FC<{ setSearchQueries: any }> = ({
+const HomeSortSection = ({
   setSearchQueries,
+}: {
+  setSearchQueries: React.Dispatch<React.SetStateAction<ISearchQueries>>;
 }) => {
   const [sortBy, setSortBy] = useState<ISearchQueries["sort_by"]>("created_at");
   const [order, setOrder] = useState<boolean>(false);
@@ -15,10 +17,10 @@ const HomeSortSection: React.FC<{ setSearchQueries: any }> = ({
     setClicked((prev) => !prev);
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setSearchQueries((currentSearchQueries: ISearchQueries) => {
+    setSearchQueries((currentSearchQueries) => {
       const newSearchQueries = { ...currentSearchQueries };
       newSearchQueries.sort_by = sortBy;
       newSearchQueries.order = order ? "ASC" : "DESC";
@@ -53,9 +55,12 @@ const HomeSortSection: React.FC<{ setSearchQueries: any }> = ({
         <form onSubmit={handleSubmit} className="sortBy">
           <select
             value={sortBy}
-            onChange={(e: any) => setSortBy(e.target.value)}
+            onChange={(e) =>
+              setSortBy(
+                e.target.value as "created_at" | "comment_count" | "votes"
+              )
+            }
           >
-            {/* unsure about how to type the e.target.value */}
             <option value="created_at">Date</option>
             <option value="comment_count">Comment Count</option>
             <option value="votes">Votes</option>

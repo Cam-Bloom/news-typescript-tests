@@ -1,18 +1,20 @@
 import IUserContext from "../../interfaces/IUserContext";
 import "./LoginPageBody.css";
-import { useState, useContext } from "react";
+import { useState, useContext, FormEvent } from "react";
 import { UserContext } from "../../context/UserContext";
 import { fetchUserByUserId } from "../../utils/utils";
 import { useNavigate } from "react-router-dom";
 
 const LoginPageBody = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [loginClassList, setLoginClassList] = useState(["LoginInput"]);
-  const [notFound, setNotFound] = useState(false);
-  const { setLoggedInUser } = useContext(UserContext) as IUserContext; // not sure
+  const [username, setUsername] = useState<string>("");
+  const [loginClassList, setLoginClassList] = useState<string[]>([
+    "LoginInput",
+  ]);
+  const [notFound, setNotFound] = useState<boolean>(false);
+  const { setLoggedInUser } = useContext(UserContext) as IUserContext;
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (username.length === 0) {

@@ -7,16 +7,15 @@ import {
 } from "../../utils/utils";
 import { useNavigate, useParams } from "react-router-dom";
 import { FaArrowCircleRight } from "react-icons/fa";
-import ISearchQueries from "../../interfaces/ISearchQueries";
+import Topics from "../../interfaces/Topics";
+import ITopic from "../../interfaces/ITopic";
 import "swiper/css";
 import "./TopicSelect.css";
 
-type Topics = ISearchQueries["topic"];
-
 const TopicSelect = () => {
-  const { topic } = useParams();
+  const { topic } = useParams<{ topic: Topics }>();
   const navigate = useNavigate();
-  const [topicListApi, setTopicListApi] = useState<Topics[]>([]);
+  const [topicListApi, setTopicListApi] = useState<ITopic[]>([]);
   const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
     width: window.innerWidth,
@@ -56,9 +55,7 @@ const TopicSelect = () => {
         </div>
       </div>
 
-      {/* Need to figure out typescript for swiper */}
-
-      {/* <Swiper
+      <Swiper
         className="topicSwiper"
         spaceBetween={50}
         slidesPerView={dimensions.width > 1200 ? 3 : 2}
@@ -74,7 +71,7 @@ const TopicSelect = () => {
                   handleNavigate(mapTopic.slug);
                 }}
               >
-                {capitalizeFirstLetter(mapTopic.slug)}
+                {mapTopic.slug && capitalizeFirstLetter(mapTopic.slug)}
               </h2>
             </SwiperSlide>
           );
@@ -89,7 +86,7 @@ const TopicSelect = () => {
         >
           View All
         </SwiperSlide>
-      </Swiper> */}
+      </Swiper>
     </section>
   );
 };

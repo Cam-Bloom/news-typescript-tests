@@ -1,5 +1,9 @@
 import axios from "axios";
 import ISearchQueries from "../interfaces/ISearchQueries";
+import IArticle from "../interfaces/IArticle";
+import IComment from "../interfaces/IComment";
+import Topics from "../interfaces/Topics";
+import ITopic from "../interfaces/ITopic";
 
 export const newsApi = axios.create({
   baseURL: `https://cb-news-api.onrender.com/api`,
@@ -26,85 +30,93 @@ export const fetchArticles = <T>(searchQueries: Partial<ISearchQueries>) => {
 
 export const fetchArticlesById = (article_id: string) => {
   return newsApi
-    .get(`/articles/${article_id}`)
+    .get<{ article: IArticle }>(`/articles/${article_id}`)
     .then(({ data }) => {
       return data;
     })
     .catch((err) => {
       console.log(err);
+      throw err;
     });
 };
 
-export const fetchCommentsById = (article_id: any) => {
+export const fetchCommentsById = (article_id: string) => {
   return newsApi
-    .get(`/articles/${article_id}/comments`)
+    .get<{ comments: IComment[] }>(`/articles/${article_id}/comments`)
     .then(({ data }) => {
       return data;
     })
     .catch((err) => {
       console.log(err);
+      throw err;
     });
 };
 
 export const postComment = (
-  article_id: any,
-  commentBody: any,
-  username: any
+  article_id: string,
+  commentBody: string,
+  username: string
 ) => {
   return newsApi
-    .post(`/articles/${article_id}/comments`, {
+    .post<{ comment: IComment }>(`/articles/${article_id}/comments`, {
       body: commentBody,
       username: username,
     })
     .then((data) => {
       return data;
+    })
+    .catch((err) => {
+      console.log(err);
+      throw err;
     });
 };
 
-export const patchArticleVotes = (article_id: any) => {
+export const patchArticleVotes = (article_id: string) => {
   return newsApi
-    .patch(`/articles/${article_id}`, { inc_votes: 1 })
+    .patch<{ article: IArticle }>(`/articles/${article_id}`, { inc_votes: 1 })
     .then((data) => {
+      console.log(data);
       return data;
     });
 };
 
 export const fetchTopics = () => {
   return newsApi
-    .get(`/topics`)
+    .get<{ topics: ITopic[] }>(`/topics`)
     .then(({ data }) => {
+      console.log(data);
       return data;
     })
     .catch((err) => {
       console.log(err);
+      throw err;
     });
 };
 
-// /api/comments/:comment_id
-
-export const deleteComment = (comment_id: any) => {
+export const deleteComment = (comment_id: number) => {
   return newsApi.delete(`/comments/${comment_id}`).catch((err) => {
     console.log(err);
+    throw err;
   });
 };
 
-export const capitalizeFirstLetter = (string: any) => {
+export const fetchUserByUserId = (username: string) => {
+  return newsApi.get(`/users/${username}`).then((data) => {
+    return data;
+  });
+};
+
+export const capitalizeFirstLetter = (string: string): string => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
-export const formatTopicArr = (arr: any, topic: any) => {
+export const formatTopicArr = (arr: ITopic[], topic: Topics): ITopic[] => {
   const arrCopy = [...arr];
 
-  const index = arr.findIndex((topicObj: any) => topic === topicObj.slug);
+  const index = arr.findIndex((topicObj) => topic === topicObj.slug);
   const selectedTopic = arrCopy.splice(index, 1);
 
   const newArr = [...selectedTopic, ...arrCopy];
 
   return newArr;
-};
-
-export const fetchUserByUserId = (username: any) => {
-  return newsApi.get(`/users/${username}`).then((data) => {
-    return data;
-  });
 };

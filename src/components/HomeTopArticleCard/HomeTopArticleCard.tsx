@@ -3,7 +3,7 @@ import "./HomeTopArticleCard.css";
 import { useNavigate } from "react-router-dom";
 
 const HomeTopArticleCard = ({ article }: { article: IArticle }) => {
-  const { title, topic, author, article_img_url, article_id } = article;
+  const { title, article_img_url, article_id } = article;
   const navigate = useNavigate();
 
   return (

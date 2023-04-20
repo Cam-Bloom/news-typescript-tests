@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, FormEvent } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FiSend } from "react-icons/fi";
 import { fetchCommentsById } from "../../utils/utils";
@@ -7,21 +7,30 @@ import { postComment } from "../../utils/utils";
 import { UserContext } from "../../context/UserContext";
 import { useContext } from "react";
 import { FaArrowCircleRight } from "react-icons/fa";
+import IComment from "../../interfaces/IComment";
 import "./CommentsSection.css";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import IUserContext from "../../interfaces/IUserContext";
 
-const CommentsSection = ({ loading, error }: any) => {
+interface Props {
+  error: null | string;
+  loading: boolean;
+}
+
+const CommentsSection = ({ loading, error }: Props) => {
   const { article_id } = useParams();
-  const { userDetails }: any = useContext(UserContext);
-  const { username } = userDetails;
+  const { userDetails } = useContext(UserContext) as IUserContext;
+  const username = userDetails?.username || "";
   const navigate = useNavigate();
-  const [comments, setComments] = useState<any[]>([]);
-  const [writeComment, setWriteComment] = useState("");
+  const [comments, setComments] = useState<IComment[]>([]);
+  const [writeComment, setWriteComment] = useState<string>("");
   const [err, setErr] = useState<null | string>(null);
-  const [commentClassList, setCommentClassList] = useState(["postcomment"]);
-  const [logInAttempted, setLogInAttempted] = useState(false);
+  const [commentClassList, setCommentClassList] = useState<string[]>([
+    "postcomment",
+  ]);
+  const [logInAttempted, setLogInAttempted] = useState<boolean>(false);
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLogInAttempted(true);
 
@@ -34,14 +43,17 @@ const CommentsSection = ({ loading, error }: any) => {
       setErr(null);
       setWriteComment("");
       setComments((currentComments) => [
-        { body: writeComment, author: username },
+        { body: writeComment, author: username, comment_id: 99999999 },
         ...currentComments,
       ]);
 
-      postComment(article_id, writeComment, username)
-        .then(() =>
-          fetchCommentsById(article_id).then((res) => setComments(res.comments))
-        )
+      postComment(article_id!, writeComment, username)
+        .then(() => {
+          article_id &&
+            fetchCommentsById(article_id).then((res) =>
+              setComments(res.comments)
+            );
+        })
         .catch((err) => {
           setComments((currentComments) => {
             const newComments = [...currentComments];
@@ -55,9 +67,10 @@ const CommentsSection = ({ loading, error }: any) => {
   };
 
   useEffect(() => {
-    fetchCommentsById(article_id)
-      .then((res) => setComments(res.comments))
-      .catch((err) => console.log(err));
+    article_id &&
+      fetchCommentsById(article_id)
+        .then((res) => setComments(res.comments))
+        .catch((err) => console.log(err));
   }, [article_id]);
 
   return loading || error ? (
