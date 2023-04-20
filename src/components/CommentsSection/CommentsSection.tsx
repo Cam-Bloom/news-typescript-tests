@@ -74,7 +74,7 @@ const CommentsSection = ({ loading, error }: Props) => {
   }, [article_id]);
 
   return loading || error ? (
-    <LoadingSpinner />
+    <></>
   ) : (
     <section className="commentSection">
       <h2>Comments</h2>

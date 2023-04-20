@@ -33,12 +33,12 @@ const ArticleBody = ({ loading, setLoading, error, setError }: Props) => {
       });
   }, [article_id, setLoading, setError]);
 
+  if (loading) return <LoadingSpinner />;
+
   const { title, topic, author, body, created_at, votes, article_img_url } =
-    article!;
+    article as IArticle;
 
   const date = created_at?.slice(0, 10).split("-").reverse().join("-");
-
-  if (loading) return <LoadingSpinner />;
 
   if (error) return <p className="articleError">Error: Article Not Found</p>;
 

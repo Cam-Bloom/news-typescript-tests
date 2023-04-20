@@ -8,7 +8,6 @@ import IUserContext from "../../interfaces/IUserContext";
 const LoginConfirmationBody = () => {
   const navigate = useNavigate();
   const { userDetails } = useContext(UserContext) as IUserContext;
-  // const { name, avatar_url } = userDetails as IUserDetails;
   const name = userDetails ? userDetails.name : "";
   const avatar_url = userDetails ? userDetails.avatar_url : "";
 
