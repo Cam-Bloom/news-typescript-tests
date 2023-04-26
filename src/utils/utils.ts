@@ -84,7 +84,6 @@ export const fetchTopics = () => {
   return newsApi
     .get<{ topics: ITopic[] }>(`/topics`)
     .then(({ data }) => {
-      console.log(data);
       return data;
     })
     .catch((err) => {

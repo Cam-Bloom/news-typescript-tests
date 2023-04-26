@@ -28,15 +28,19 @@ const CommentCard = ({ comment, setComments }: Props) => {
   };
 
   return (
-    <div className="commentCard flex">
+    <li className="commentCard flex">
       <div className="commentContent">
         <h5>{author}</h5>
         <p>{body}</p>
       </div>
       {username === author && (
-        <RiDeleteBinLine onClick={handleDelete} className="deleteIcon" />
+        <RiDeleteBinLine
+          data-testid="deleteButton"
+          onClick={handleDelete}
+          className="deleteIcon"
+        />
       )}
-    </div>
+    </li>
   );
 };
 

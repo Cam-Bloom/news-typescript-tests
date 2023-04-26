@@ -30,6 +30,7 @@ const SmallArtCard = ({ article }: { article: IArticle }) => {
         </div>
         <div
           className="readMore"
+          data-testid="read-more-button"
           onClick={() => {
             navigate(`/article/${article_id}`);
           }}

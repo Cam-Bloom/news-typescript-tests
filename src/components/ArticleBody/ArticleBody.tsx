@@ -15,16 +15,15 @@ interface Props {
 const ArticleBody = ({ loading, setLoading, error, setError }: Props) => {
   const { article_id } = useParams();
   const navigate = useNavigate();
-
   const [article, setArticle] = useState<IArticle | null>(null);
 
   useEffect(() => {
     setLoading(true);
     fetchArticlesById(article_id!)
       .then((res) => {
-        setArticle(res.article);
         setLoading(false);
         setError(null);
+        setArticle(res.article);
       })
       .catch((err) => {
         console.log(err);

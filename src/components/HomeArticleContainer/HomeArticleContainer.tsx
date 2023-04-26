@@ -18,13 +18,11 @@ const HomeArtCont = ({ searchQueries, setSearchQueries }: Props) => {
   useEffect(() => {
     setLoading(true);
     fetchArticles<{ articles: Article[] }>(searchQueries).then((data) => {
-      // how to ensure data from api here is correct format
       setArticlesFromApi(data.articles);
       setLoading(false);
     });
   }, [searchQueries]);
 
-  // e is not needed but onclick has a mouse event type and expects e
   const showAllArticles = (limit = 1000) => {
     setSearchQueries((currentSearchQueries) => {
       const newSearchQueries = { ...currentSearchQueries };
@@ -42,7 +40,9 @@ const HomeArtCont = ({ searchQueries, setSearchQueries }: Props) => {
           <SmallArticleCard key={article.article_id} article={article} />
         ))}
       </ul>
-      <button onClick={() => showAllArticles()}>Show More</button>
+      <button data-testid="show-more-button" onClick={() => showAllArticles()}>
+        Show More
+      </button>
     </section>
   );
 };

@@ -17,7 +17,8 @@ interface Props {
 }
 
 const CommentsSection = ({ loading, error }: Props) => {
-  const { article_id } = useParams();
+  const params = useParams();
+  const { article_id } = params;
   const { userDetails } = useContext(UserContext) as IUserContext;
   const username = userDetails?.username || "";
   const navigate = useNavigate();
@@ -73,12 +74,16 @@ const CommentsSection = ({ loading, error }: Props) => {
   }, [article_id]);
 
   return loading || error ? (
-    <></>
+    <div data-testid="nothing"></div>
   ) : (
     <section className="commentSection">
       <h2>Comments</h2>
 
-      <form className={commentClassList.join(" ")} onSubmit={handleSubmit}>
+      <form
+        data-testid="form"
+        className={commentClassList.join(" ")}
+        onSubmit={handleSubmit}
+      >
         <label htmlFor="comment">Write Comment</label>
         <input
           type="text"
@@ -111,14 +116,15 @@ const CommentsSection = ({ loading, error }: Props) => {
           </div>
         </div>
       )}
-
-      {comments.map((comment) => (
-        <CommentCard
-          key={comment.comment_id}
-          setComments={setComments}
-          comment={comment}
-        />
-      ))}
+      <ul>
+        {comments.map((comment) => (
+          <CommentCard
+            key={comment.comment_id}
+            setComments={setComments}
+            comment={comment}
+          />
+        ))}
+      </ul>
     </section>
   );
 };

@@ -11,7 +11,6 @@ const HomeSortSection = ({
   const [sortBy, setSortBy] = useState<ISearchQueries["sort_by"]>("created_at");
   const [order, setOrder] = useState<boolean>(false);
   const [clicked, setClicked] = useState<boolean>(false);
-  const contentEl = useRef<HTMLInputElement>(null);
 
   const handleToggle = () => {
     setClicked((prev) => !prev);
@@ -20,19 +19,23 @@ const HomeSortSection = ({
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setSearchQueries((currentSearchQueries) => {
-      const newSearchQueries = { ...currentSearchQueries };
-      newSearchQueries.sort_by = sortBy;
-      newSearchQueries.order = order ? "ASC" : "DESC";
-
-      return newSearchQueries;
+    setSearchQueries({
+      limit: 10,
+      topic: undefined,
+      sort_by: sortBy,
+      order: order ? "ASC" : "DESC",
     });
   };
 
   return (
     <section className="sortBySection">
       <h2 className="homeArticleTitle">All Articles</h2>
-      <div className="sortByExpander" onClick={handleToggle}>
+
+      <div
+        className="sortByExpander"
+        onClick={handleToggle}
+        data-testid="expand-accordian"
+      >
         <label className="clickOn">Filter</label>
         <span className="sortByIcon">
           {clicked ? (
@@ -44,13 +47,9 @@ const HomeSortSection = ({
       </div>
 
       <div
-        ref={contentEl}
+        data-testid="accordian"
         className="sortByWrapper"
-        style={
-          clicked && contentEl.current
-            ? { height: contentEl.current.scrollHeight }
-            : { height: "0px" }
-        }
+        style={clicked ? { height: "60px" } : { height: "0px" }}
       >
         <form onSubmit={handleSubmit} className="sortBy">
           <select
