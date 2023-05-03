@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 
 import "./Header.css";
 import LoginButton from "../LoginButton/LoginButton";
+import { t } from "i18next";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ const Header = () => {
       <header>
         <div onClick={goHome} className="headerLogo">
           <GiFlowerEmblem className="icon" />
-          <h1>Bloom News</h1>
+          <h1>{t("bloom-news")}</h1>
         </div>
         {dimensions.width > 900 && <DesktopNav />}
         {dimensions.width > 900 && <LoginButton />}

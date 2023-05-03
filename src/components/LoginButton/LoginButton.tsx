@@ -2,6 +2,7 @@ import { RiUser3Line } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 
 import "./LoginButton.css";
+import { t } from "i18next";
 
 const LoginButton = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const LoginButton = () => {
           navigate("/login");
         }}
       >
-        Login
+        {t("login")}
       </p>
     </div>
   );

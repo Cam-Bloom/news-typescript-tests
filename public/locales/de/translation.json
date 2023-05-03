@@ -1,8 +1,14 @@
 {
   "home": {
-    "sortTitle": "Alle Artikel"
+    "sortTitle": "Alle Artikel",
+    "home": "Heim"
   },
   "counter_one": "Die Sprache wurde erst ein mal gewechselt",
   "counter_other": "Die Sprache wurde {{count}} mal gewechselt 1232",
-  "test": "prüfen"
+  "test": "prüfen",
+  "test2": "22222",
+  "topics": "Themen",
+  "about-us": "Über uns",
+  "bloom-news": "Bloom-News",
+  "login": "Anmeldung"
 }

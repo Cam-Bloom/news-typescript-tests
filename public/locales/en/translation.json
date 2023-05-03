@@ -1,10 +1,15 @@
 {
   "home": {
-    "sortTitle": "All Articles"
+    "sortTitle": "All Articles",
+    "home": "Home"
   },
   "counter_one": "Changed language just once",
   "counter_other": "Changed language already {{count}} times",
   "test": "test",
   "test2": "test2",
-  "counter": "counter"
+  "counter": "counter",
+  "topics": "Topics",
+  "about-us": "About Us",
+  "bloom-news": "Bloom News",
+  "login": "Login"
 }

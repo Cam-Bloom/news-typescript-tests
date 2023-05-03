@@ -54,7 +54,7 @@ const ArticleBody = ({ loading, setLoading, error, setError }: Props) => {
           navigate(`/topics/${topic}`);
         }}
       >
-        {topic}
+        t({topic}
       </h5>
       <h2 className="articleHeader">{title}</h2>
       <div className="subArticleHeader">
