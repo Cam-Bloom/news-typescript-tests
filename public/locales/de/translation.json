@@ -1,0 +1,8 @@
+{
+  "home": {
+    "sortTitle": "Alle Artikel"
+  },
+  "counter_one": "Die Sprache wurde erst ein mal gewechselt",
+  "counter_other": "Die Sprache wurde {{count}} mal gewechselt 1232",
+  "test": "prüfen"
+}

@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Routes } from "react-router-dom";
 import { UserProvider } from "../context/UserContext";
 
 const AllProviders = ({ children }: { children: any }) => {

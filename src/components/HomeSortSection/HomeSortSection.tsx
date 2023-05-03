@@ -1,7 +1,8 @@
-import { useState, useRef, FormEvent } from "react";
+import { useState, FormEvent } from "react";
 import { FaChevronDown, FaRegWindowMinimize } from "react-icons/fa";
 import ISearchQueries from "../../interfaces/ISearchQueries";
 import "./HomeSortSection.css";
+import { useTranslation } from "react-i18next";
 
 const HomeSortSection = ({
   setSearchQueries,
@@ -11,6 +12,8 @@ const HomeSortSection = ({
   const [sortBy, setSortBy] = useState<ISearchQueries["sort_by"]>("created_at");
   const [order, setOrder] = useState<boolean>(false);
   const [clicked, setClicked] = useState<boolean>(false);
+
+  const { t } = useTranslation();
 
   const handleToggle = () => {
     setClicked((prev) => !prev);
@@ -29,7 +32,7 @@ const HomeSortSection = ({
 
   return (
     <section className="sortBySection">
-      <h2 className="homeArticleTitle">All Articles</h2>
+      <h2 className="homeArticleTitle">{t("home.sortTitle")}</h2>
 
       <div
         className="sortByExpander"

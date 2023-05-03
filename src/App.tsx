@@ -1,6 +1,6 @@
 import Article from "./pages/Article/Article";
 import Home from "./pages/Home/Home";
-import { Routes, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import TopicPage from "./pages/TopicPage/TopicPage";
 import MenuPage from "./pages/MenuPage/MenuPage";
 import AboutUs from "./pages/AboutUs/AboutUs";
